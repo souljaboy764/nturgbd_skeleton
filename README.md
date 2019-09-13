@@ -1,4 +1,4 @@
-# NTU RGB-D Skeleton TF Publisher
+# nturgbd_skeleton
 This package implements a TF broadcaster for publishing the skeleton data from the NTU RGB-D Dataset. 
 
 ## Prerequisites
