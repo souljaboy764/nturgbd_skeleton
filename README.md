@@ -7,7 +7,7 @@ This codebase was developed and tested  on Ubuntu 18.04 with ROS melodic.
 ## Running the node
 After building this package in your workspace using `catkin_make`, run the below command
 ```
-rosrun nturgbd_skeleton node
+rosrun nturgbd_skeleton node <skeleton file path>
 ```
 You can visualize the TFs in rviz or use the `view_frames` node from the tf package.
 
