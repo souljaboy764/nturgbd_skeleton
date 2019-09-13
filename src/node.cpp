@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	ros::Rate r(10);
 	if(argc < 2)
 	{
-		ROS_INFO("Usage: rosrun nturgbd_skeleton nturgbd_skeleton_node <skeleton file path>");
+		ROS_INFO("Usage: rosrun nturgbd_skeleton node <skeleton file path>");
 		ros::shutdown();
 		return -1;
 	}
@@ -105,17 +105,24 @@ int main(int argc, char** argv)
 
 					if(bodyTrackingState and jointTrackingState)
 					{
-						ROS_INFO("TRACKING JOINT %d of SKELETON %d in FRAME %d",joint_num, body_num, frame);
 						body_transforms[body_num*25 + joint_num].transform.translation.x = x;
 						body_transforms[body_num*25 + joint_num].transform.translation.y = y;
 						body_transforms[body_num*25 + joint_num].transform.translation.z = z;
 
+						if(orientationX==orientationY and orientationY==orientationZ and orientationZ==orientationW and orientationW==0.)
+						{
+							ROS_INFO("QUATERNION ERROR!!! ALL ZERO");
+							orientationW = 1.;
+						}
 						body_transforms[body_num*25 + joint_num].transform.rotation.x = orientationX;
 						body_transforms[body_num*25 + joint_num].transform.rotation.y = orientationY;
 						body_transforms[body_num*25 + joint_num].transform.rotation.z = orientationZ;
 						body_transforms[body_num*25 + joint_num].transform.rotation.w = orientationW;
 
 						body_transforms[body_num*25 + joint_num].header.stamp = t;
+						
+						ROS_INFO("TRACKING JOINT %d of SKELETON %d in FRAME %d as %.3f %.3f %.3f %.3f %.3f %.3f %.3f",joint_num, body_num, frame, x, y, z, orientationX, orientationY, orientationZ, orientationW);
+						
 					}
 				}
 			}
