@@ -9,6 +9,7 @@ project(nturgbd_skeleton)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
+  visualization_msgs
   roscpp
   rospy
   std_msgs
