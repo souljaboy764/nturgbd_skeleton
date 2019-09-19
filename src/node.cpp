@@ -43,9 +43,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	string camera_frame_id;
-	if(!p_nh.getParam("camera_frame_id", camera_frame_id))
-		camera_frame_id = "camera";
+	string camera_frame_id = p_nh.param(string("camera_frame_id"), string("camera"));
 	
 	static tf2_ros::TransformBroadcaster br;
 	ros::Publisher skeleton_marker_array_pub = nh.advertise<visualization_msgs::MarkerArray>("/nturgbd_skeleton_viz", 10);
