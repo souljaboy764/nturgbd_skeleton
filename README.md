@@ -6,11 +6,11 @@ This codebase was developed and tested  on Ubuntu 18.04 with ROS melodic.
 
 ## Running the node
 After building this package in your workspace using `catkin_make`, run the below command
+```bash
+roslaunch nturgbd_skeleton node.launch skeleton_filename:=<path to skeleton_file> camera_frame_id:=<your camera frame id>
 ```
-rosrun nturgbd_skeleton node <skeleton file path>
-```
-You can visualize the TFs in rviz or use the `view_frames` node from the tf package.
+If the `skeleton_filename` and `camera_frame_id` are omitted from the command, the default values in the launch file shall be used.
 
-## TODO
-- Add visualization markers for the joints
-- Add option to publish as NuiTrack joints instead of kinect joints
+You can visualize the joints as 
+- TFs in rviz or using the `view_frames` node from the tf package
+- a MarkerArray on the topic `/nturgbd_skeleton_viz`

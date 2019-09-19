@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch>
+	<arg name="skeleton_filename"  default="$(env HOME)/test.skeleton"/>
+	<arg name="camera_frame_id"  default="camera_rgb_optical_frame"/>
+
+	<node name="nturgbd_skeleton_node" pkg="nturgbd_skeleton" type="node" output="screen" required="true">
+		<param name="skeleton_filename" type="string" value="$(arg skeleton_filename)" />
+		<param name="camera_frame_id" type="string" value="$(arg camera_frame_id)" />
+	</node>
+</launch>
